@@ -28,13 +28,22 @@
           <span class="logo_name">OneSelect</span>
         </div>
         <ul class="nav-links">
-          <li>
+          <li onclick="irInicio()">
             <a href="#">
-              <i class='bx bx-grid-alt' ></i>
-              <span class="link_name" id="new">Registros</span>
+              <i class='bx bx-home-alt' ></i>
+              <span class="link_name">Inicio</span>
             </a>
             <ul class="sub-menu blank">
-              <li><a class="link_name" href="registros.html">Registros</a></li>
+              <li><a class="link_name">Inicio</a></li>
+            </ul>
+          </li>
+          <li onclick="irRegistros()">
+            <a href="#">
+              <i class='bx bx-receipt'></i>
+              <span class="link_name">Registros</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name">Registros</a></li>
             </ul>
           </li>
           <li>
@@ -52,10 +61,10 @@
               <li><a href="#">PHP & MySQL</a></li>
             </ul>
           </li>
-          <li>
+          <li onclick="irAcercaDe()">
             <a href="#">
-              <i class='bx bx-cog' ></i>
-              <span class="link_name" id="AD">Acerca de</span>
+              <i class='bx bx-info-circle'></i>
+              <span class="link_name">Acerca de</span>
             </a>
             <ul class="sub-menu blank"">
               <li><a class="link_name" href="#">Acerca de</a></li>
@@ -110,7 +119,20 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script>
-        require('main.js')
+      const ipc = window.require('electron').ipcRenderer;
+
+       function irAcercaDe(){
+        ipc.send('abrirAcercaDe');  
+       };
+       function irRegistros(){
+        ipc.send('abrirRegistros');  
+       };
+       function irInicio(){
+        ipc.send('abrirInicio');  
+       };
+       
+       
+       
     </script>
 </body>
 

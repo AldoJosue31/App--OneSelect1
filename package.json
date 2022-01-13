@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron ."
   },
-  "build":{
+  "build": {
     "extends": "./config/electron-builder.json",
     "mac": {
       "icon": "oneselect.ico"
@@ -24,6 +24,8 @@
     "electron": "^16.0.5"
   },
   "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1",
+    "git": "^0.1.5",
     "nedb": "^1.8.0"
   }
 }

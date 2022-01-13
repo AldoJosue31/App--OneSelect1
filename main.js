@@ -3,10 +3,14 @@ const { app, BrowserWindow, ipcMain, Menu } = require("electron")
 const url = require('url')
 const path = require("path")
 
+
+
   
 let mainWindow;
 
-
+function destroy(){
+  mainWindow.loadFile("acerca-de.html");
+}
 
 let menuAplicacionPlantilla = [
     {
@@ -16,7 +20,7 @@ let menuAplicacionPlantilla = [
                 label: 'Acerca de',
                 accelerator: process.platform == 'darwin' ? 'Comand+J' : 'Ctrl+J',
                 click: () => {
-                  mainWindow.loadFile("acerca-de.html");
+                  destroy();
                 }
             }
         ]
@@ -52,7 +56,6 @@ function createWindow() {
     height: 600,
     minHeight: 650,
     minWidth: 825,
-    icon: __dirname + 'oneselect.ico',
     titleBarStyle: 'hidden',
     titleBarOverlay: true,
         titleBarOverlay: {
@@ -72,13 +75,25 @@ function createWindow() {
   mainWindow.loadFile("index.html");
   let menu = Menu.buildFromTemplate(menuAplicacionPlantilla);
   mainWindow.setMenu(menu);
+
+
   
   // To maximize the window
   mainWindow.maximize();
   mainWindow.show();
 }
 
+ipcMain.on("abrirAcercaDe", (event, arg) => {
+  mainWindow.loadFile("acerca-de.html");
+});
 
+ipcMain.on("abrirRegistros", (event, arg) => {
+  mainWindow.loadFile("registros.html");
+});
+
+ipcMain.on("abrirInicio", (event, arg) => {
+  mainWindow.loadFile("index.html");
+});
 
 
 app.whenReady().then(() => {

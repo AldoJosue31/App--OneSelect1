@@ -53,4 +53,23 @@ class GestorPersonas {
     }
 }
 
+const alerta = document.getElementById('alerta');
+
+function desaparecer() {
+    setTimeout(function(){
+        if(alerta.style.display = "block"){
+            alerta.style.display = "none";
+        }
+    }, 5000);
+}
+
+function hizoClick() {
+if (nombres == "" || apellidos == "" || orden == "") {
+    
+} else {
+alerta.style.position = "block";
+desaparecer();
+}
+};
+
 let gestorPersonas = new GestorPersonas();
